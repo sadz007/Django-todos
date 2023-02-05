@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+</head>
+<style>
+    .reg-form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 10px;
+        font-size: large;
+        font-weight: 900;
+        box-shadow: 2px 3px 3px black;
+        border: 1px solid black;
+
+
+    }
+    .botton{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        
+    }
+    .box{
+        border: 3px solid black;
+        box-shadow: inset 2px 2px 2px rgb(165, 165, 14);;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5rem;
+        
+    }
+    a{
+        color: rgb(52, 149, 228);
+    }
+    .header{
+        display: flex;
+        justify-content: center;
+        font-size:xx-large;
+        color: #bea925;
+        text-shadow: 1px 1px 1px rgba(14, 14, 14, 0.75);
+    }
+    .button{
+        color:white;
+        background-color: black;
+        padding: 7px;
+        font-size: medium;
+        font-weight: 900;
+    }
+    .reg{
+        color:#bea925;
+        border-bottom: 3px solid black;
+    }
+</style>
+<body>  
+    <div class="header">
+        <h1>My todo's</h1>
+    </div> 
+    <div class="box">
+        <form action="" method="POST" class="reg-form">
+            <h2 class="reg">Create Account</h2>
+        {% csrf_token %}
+        {{ form }}
+        <div >
+            <button class="button"> Register</button>
+        </div>
+    </form>
+</div>
+<div class="botton">
+    <p>Already have an account ?  <a href="{% url 'login' %}">Login</a> </p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .user{
+        font-variant: small-caps;
+        font-weight: 700;
+    }
+    .logout{
+        color: brown;
+    }
+    .login{
+        color: green;
+    }
+    .main-conatiner{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: 2px solid black;
+        padding: 15px;
+        box-shadow: inset 2px 2px 2px rgb(165, 165, 14);;
+    }
+    .add-task{
+        color: rgb(110, 110, 19);
+        font-size: larger;
+        font-weight: bold;
+    }
+    .tasks{
+        margin-bottom: 5px;
+    }
+    a{
+        color: rgb(110, 110, 19);  
+        font-weight: 700;
+    }
+    .delete{
+        color:rgb(183, 57, 57)
+    }
+    .table{
+        display: grid;
+        grid-column-start: 2;
+        grid-column-end: five;
+        grid-row-start: row1-start;
+        grid-row-end: 3;
+        font-weight: 700;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .head{
+        display: flex;
+        justify-content: center;
+        color: #bea925;
+    }
+    .search{
+        color:white;
+        background-color: black;
+        padding: 3px;
+        font-size: medium;
+        font-weight: 900;
+    }
+    .search-input{
+        padding: 3px;
+        background-color: aliceblue;
+    }
+    .table-head{
+        color: #0b0a01;
+        font-size: larger;
+        border-bottom: 2px solid black;
+        text-shadow: 1px 1px 1px rgba(227, 191, 32, 0.75);
+    }
+    td{
+        padding: 5px;
+        margin: 5px;
+        border-bottom: 1px dashed black;
+        
+    }
+
+
+</style>
+<body>
+
+    {% if request.user.is_authenticated %}
+        <div>
+            <h2 class="user"> Create a todo's list {{ request.user }}</h2>
+
+        </div>
+        
+        <a href="{% url 'logout' %}" class="logout">Logout</a>
+            
+    {% else %}
+        <a href="{% url 'login' %}" class="login">Login</a>
+            
+    {% endif %}
+
+    <hr>
+    <div class="head">
+        <h1>My List {{ color}}</h1>
+        
+
+    </div>
+    
+    <div class="main-conatiner">
+        <div class="tasks">
+            <a class="add-task" href="{% url 'task-create' %}">Add Task</a>
+        </div>
+        <div>
+            <form action="" method="GET">
+                <input type="text" name="search-area" value="{{search_input}}" class="search-input">
+                <input type="submit" value="Search" class="search">
+            </form>
+        </div>
+
+    
+    
+        <div class="table">
+            <table>
+                <tr>
+                    <th>
+                        <h3 class="table-head"> Things todo !</h3>
+                    </th>
+                    <th></th>
+                </tr>
+                {% for task in tasks  %}
+                <tr class="row">
+                    <td>{{ task.title }}</td>
+                    <!-- <td><a href="{% url 'task' task.id %}">Views</a></td> -->
+                    <td><a href="{% url 'task' task.id  %}">Check It</a></td>
+                    <td><a href="{% url 'task-update' task.id %}">Edit</a></td>
+                    <td><a href="{% url 'task-delete' task.id %}" class="delete">Delete</a></td>
+                </tr>
+                {% empty %}
+                    <h3>No items in list</h3>
+                {% endfor %}
+            </table>
+    </div>
+</div>
+</body>
+</html>

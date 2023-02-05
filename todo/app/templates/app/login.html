@@ -1,0 +1,88 @@
+<!-- {% load static tailwind_tags %} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- {% tailwind_css  %} -->
+</head>
+<style>
+    form{
+        width: 20rem;
+        height: 10rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding:10px;
+        gap: 1rem;
+        font-size: large;
+        font-weight: 900;
+        width: 450px;
+        box-shadow: 2px 3px 3px black;
+        height: 275px;
+        border: 1px solid black;
+
+
+    }
+    .botton{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        
+    }
+    .box{
+        border: 3px solid black;
+        box-shadow: inset 2px 2px 2px rgb(165, 165, 14);;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5rem;
+        
+    }
+    a{
+        color: rgb(52, 149, 228);
+    }
+    .header{
+        display: flex;
+        justify-content: center;
+        font-size:xx-large;
+        color: #bea925;
+        text-shadow: 1px 1px 1px rgba(14, 14, 14, 0.75);
+    }
+    .button{
+        color:white;
+        background-color: black;
+        padding: 7px;
+        font-size: medium;
+        font-weight: 900;
+    }
+    .login{
+        color:#bea925;
+    }
+</style>
+<body>
+    <div class="header">
+        <h1>My todo's</h1>
+    </div>
+    <div class="conatiner">
+        <div class="box">
+            <form action="" method="POST">
+                <h2 class="login">LogIn</h2>
+                {% csrf_token %}
+                {{form}}
+                <div >
+                    <button class ="button" type="submit"> Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="botton">
+        <p>Dont Have Account ? <a href="{% url 'register' %}">Register</a></p>
+    </div>
+    
+</body>
+</html>
